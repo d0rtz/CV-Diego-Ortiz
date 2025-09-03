@@ -26,46 +26,48 @@ export default function CVPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background transition-colors duration-300">
       {/* Theme Toggle */}
-      <div className="fixed top-6 right-6 z-50">
+      <div className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50">
         <Button
           variant="outline"
           size="icon"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="rounded-full shadow-lg backdrop-blur-sm"
+          className="rounded-full shadow-lg backdrop-blur-sm w-10 h-10 sm:w-auto sm:h-auto"
         >
           {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         </Button>
       </div>
 
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-6 py-8 sm:py-12 max-w-4xl">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <Card className="p-8 bg-gradient-to-r from-card via-card to-muted/30 border-2 shadow-xl">
-            <CardContent className="space-y-4">
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <Card className="p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-card via-card to-muted/30 border-2 shadow-xl">
+            <CardContent className="space-y-3 sm:space-y-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Diego Ortiz
               </h1>
-              <p className="text-2xl text-muted-foreground font-medium">Desarrollador Web Full Stack</p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  Getafe, Madrid, España
+              <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground font-medium">
+                Desarrollador Web Full Stack
+              </p>
+              <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+                <div className="flex items-center justify-center gap-2">
+                  <MapPin className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                  <span className="text-center">Getafe, Madrid, España</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="h-4 w-4" />
-                  +34 611 51 16 51
+                <div className="flex items-center justify-center gap-2">
+                  <Phone className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                  <span>+34 611 51 16 51</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  diegoortizruescas@gmail.com
+                <div className="flex items-center justify-center gap-2">
+                  <Mail className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                  <span className="break-all sm:break-normal">diegoortizruescas@gmail.com</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Linkedin className="h-4 w-4" />
+                <div className="flex items-center justify-center gap-2">
+                  <Linkedin className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                   <a href="https://www.linkedin.com/in/d0rtz" className="text-primary hover:underline">
                     LinkedIn
                   </a>
@@ -77,7 +79,7 @@ export default function CVPage() {
 
         {/* Professional Summary */}
         <Section icon={<User />} title="Resumen Profesional">
-          <p className="text-lg leading-relaxed text-muted-foreground">
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-muted-foreground">
             Desarrollador web <strong className="text-foreground">full stack</strong> con{" "}
             <strong className="text-foreground">2 años</strong> de experiencia y un sólido conocimiento de{" "}
             <strong className="text-foreground">JavaScript</strong> y frameworks modernos como{" "}
@@ -138,13 +140,13 @@ function Section({ icon, title, children }: { icon: React.ReactNode; title: stri
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6 }}
-      className="mb-12"
+      className="mb-8 sm:mb-12"
     >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 rounded-lg bg-primary/10 text-primary">{icon}</div>
-        <h2 className="text-3xl font-bold text-foreground">{title}</h2>
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <div className="p-1.5 sm:p-2 rounded-lg bg-primary/10 text-primary flex-shrink-0">{icon}</div>
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground">{title}</h2>
       </div>
-      <Card className="p-6 shadow-lg">
+      <Card className="p-3 sm:p-4 lg:p-6 shadow-lg">
         <CardContent>{children}</CardContent>
       </Card>
     </motion.section>
@@ -214,19 +216,19 @@ function TimelineItem({ experience, index }: { experience: any; index: number })
       initial={{ opacity: 0, x: -50 }}
       animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="relative pl-12"
+      className="relative pl-8 sm:pl-12"
     >
-      <div className="absolute left-2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg"></div>
-      <Card className="p-6 hover:shadow-xl transition-shadow duration-300 border-l-4 border-l-primary">
+      <div className="absolute left-1 sm:left-2 w-3 h-3 sm:w-4 sm:h-4 bg-primary rounded-full border-2 sm:border-4 border-background shadow-lg"></div>
+      <Card className="p-3 sm:p-4 lg:p-6 hover:shadow-xl transition-shadow duration-300 border-l-2 sm:border-l-4 border-l-primary">
         <CardContent>
-          <h3 className="text-xl font-bold text-foreground mb-1">{experience.title}</h3>
-          <p className="text-primary font-semibold mb-1">{experience.company}</p>
-          <p className="text-sm text-muted-foreground mb-4">{experience.period}</p>
-          <ul className="space-y-2">
+          <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">{experience.title}</h3>
+          <p className="text-sm sm:text-base text-primary font-semibold mb-1">{experience.company}</p>
+          <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">{experience.period}</p>
+          <ul className="space-y-1.5 sm:space-y-2">
             {experience.responsibilities.map((resp: string, i: number) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                <div className="w-1.5 h-1.5 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
-                <span>{resp}</span>
+              <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
+                <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-secondary rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></div>
+                <span className="leading-relaxed">{resp}</span>
               </li>
             ))}
           </ul>
@@ -299,11 +301,11 @@ function SkillCategory({ category, index }: { category: any; index: number }) {
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
     >
-      <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-        <div className={`w-3 h-3 rounded-full bg-${category.color}`}></div>
+      <h3 className="text-base sm:text-lg font-semibold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
+        <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-${category.color}`}></div>
         {category.category}
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
         {category.skills.map((skill: any, skillIndex: number) => (
           <SkillBar key={skillIndex} skill={skill} delay={skillIndex * 0.1} color={category.color} />
         ))}
@@ -327,12 +329,12 @@ function SkillBar({ skill, delay, color }: { skill: any; delay: number; color: s
   }, [isInView, skill.level, delay])
 
   return (
-    <div ref={ref} className="space-y-2">
+    <div ref={ref} className="space-y-1.5 sm:space-y-2">
       <div className="flex justify-between items-center">
-        <span className="text-sm font-medium text-foreground">{skill.name}</span>
-        <span className="text-sm text-muted-foreground">{skill.level}%</span>
+        <span className="text-xs sm:text-sm font-medium text-foreground">{skill.name}</span>
+        <span className="text-xs sm:text-sm text-muted-foreground">{skill.level}%</span>
       </div>
-      <Progress value={progress} className="h-2" />
+      <Progress value={progress} className="h-1.5 sm:h-2" />
     </div>
   )
 }
@@ -349,11 +351,11 @@ function EducationItem({
   period: string
 }) {
   return (
-    <div className="border-l-4 border-l-secondary pl-4">
-      <h3 className="text-lg font-semibold text-foreground">{title}</h3>
-      <p className="text-secondary font-medium">{institution}</p>
-      <p className="text-sm text-muted-foreground">{location}</p>
-      <p className="text-sm text-muted-foreground italic">{period}</p>
+    <div className="border-l-2 sm:border-l-4 border-l-secondary pl-3 sm:pl-4">
+      <h3 className="text-base sm:text-lg font-semibold text-foreground">{title}</h3>
+      <p className="text-sm sm:text-base text-secondary font-medium">{institution}</p>
+      <p className="text-xs sm:text-sm text-muted-foreground">{location}</p>
+      <p className="text-xs sm:text-sm text-muted-foreground italic">{period}</p>
     </div>
   )
 }
@@ -373,12 +375,12 @@ function LanguageItem({ language, level, progress }: { language: string; level: 
   }, [isInView, progress])
 
   return (
-    <div ref={ref} className="space-y-2">
+    <div ref={ref} className="space-y-1.5 sm:space-y-2">
       <div className="flex justify-between items-center">
-        <span className="font-medium text-foreground">{language}</span>
-        <span className="text-sm text-muted-foreground">{level}</span>
+        <span className="text-sm sm:text-base font-medium text-foreground">{language}</span>
+        <span className="text-xs sm:text-sm text-muted-foreground">{level}</span>
       </div>
-      <Progress value={currentProgress} className="h-2" />
+      <Progress value={currentProgress} className="h-1.5 sm:h-2" />
     </div>
   )
 }
